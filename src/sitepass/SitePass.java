@@ -86,8 +86,9 @@ public class SitePass extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         confirmMasterField = new javax.swing.JPasswordField();
         confirmCheckBox = new javax.swing.JCheckBox();
+        clearAllFieldsButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SitePass");
 
         jLabel1.setText("Master Password:");
@@ -183,46 +184,50 @@ public class SitePass extends javax.swing.JFrame {
             }
         });
 
+        clearAllFieldsButton.setText("Clear All Fields");
+        clearAllFieldsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearAllFieldsButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(clearClipButton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(genPassButton)
+                    .addComponent(showPasswordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(confirmCheckBox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4))
+                    .addComponent(copyToClipButton))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(genPassButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(showPasswordButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(confirmCheckBox)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(siteNameField)
                             .addComponent(masterField)
                             .addComponent(passwordField)
                             .addComponent(showPasswordField)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lengthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                                        .addComponent(lengthSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(confirmMasterField, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addContainerGap())))
+                                .addComponent(lengthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                                .addComponent(lengthSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addComponent(confirmMasterField)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(aboutButton)
-                                .addGap(1, 1, 1)
-                                .addComponent(clearClipButton))
-                            .addComponent(copyToClipButton))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(clearAllFieldsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(aboutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -232,10 +237,11 @@ public class SitePass extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(masterField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(confirmMasterField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirmCheckBox))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(confirmCheckBox, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(confirmMasterField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -256,13 +262,15 @@ public class SitePass extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(showPasswordButton)
                     .addComponent(showPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(copyToClipButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(aboutButton)
-                    .addComponent(clearClipButton))
-                .addContainerGap())
+                    .addComponent(copyToClipButton)
+                    .addComponent(clearAllFieldsButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clearClipButton)
+                    .addComponent(aboutButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -328,6 +336,20 @@ public class SitePass extends javax.swing.JFrame {
                 setContents(new StringSelection(content), null);
     }
 
+    @Override
+    /**
+     * Gives user the option to clear clipboard.
+     */
+    public void dispose() {
+        switch (JOptionPane.showConfirmDialog(this, "Clear clipboard?", null,
+                JOptionPane.YES_NO_OPTION)) {
+            case JOptionPane.YES_OPTION:
+                copyToClipboard("");
+            case JOptionPane.NO_OPTION:
+                super.dispose();
+        }
+    }
+
     private void copyToClipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyToClipButtonActionPerformed
         copyToClipboard(passwordField.getText());
     }//GEN-LAST:event_copyToClipButtonActionPerformed
@@ -382,6 +404,14 @@ public class SitePass extends javax.swing.JFrame {
         }
     }
 
+    private void clearAllFields() {
+        masterField.setText("");
+        confirmMasterField.setText("");
+        siteNameField.setText("");
+        passwordField.setText("");
+        showPasswordField.setText("");
+    }
+
     private void lengthFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lengthFieldActionPerformed
         applyLengthFieldValue();
     }//GEN-LAST:event_lengthFieldActionPerformed
@@ -393,6 +423,10 @@ public class SitePass extends javax.swing.JFrame {
     private void confirmCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmCheckBoxActionPerformed
         confirmMasterField.setEditable(confirmCheckBox.isSelected());
     }//GEN-LAST:event_confirmCheckBoxActionPerformed
+
+    private void clearAllFieldsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearAllFieldsButtonActionPerformed
+        clearAllFields();
+    }//GEN-LAST:event_clearAllFieldsButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -409,6 +443,7 @@ public class SitePass extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aboutButton;
+    private javax.swing.JButton clearAllFieldsButton;
     private javax.swing.JButton clearClipButton;
     private javax.swing.JCheckBox confirmCheckBox;
     private javax.swing.JPasswordField confirmMasterField;
